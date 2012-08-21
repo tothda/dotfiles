@@ -42,3 +42,12 @@
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
 (global-set-key (kbd "<ESC> <f1>") 'sr-speedbar-toggle)
+
+;; cygwin path setup
+
+(let ((cygwin-bin-path "c:/cygwin/bin"))
+  (if (file-exists-p cygwin-bin-path)
+     (progn
+       (setenv "PATH" (concat cygwin-bin-path ";" (getenv "PATH")))
+       (setq exec-path (cons cygwin-bin-path exec-path)))))
+
