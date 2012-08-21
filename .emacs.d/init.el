@@ -32,7 +32,7 @@
 ;; show speedbar on the right side of the current window
 (setq sr-speedbar-right-side nil)
 ;; skip speedbar when changing the active window
-(setq sr-speedbar-skip-other-window-p t)
+(setq sr-speedbar-skip-other-window-p t)n
 
 (add-to-list 'load-path "~/.emacs.d/vendor/")
 
@@ -42,13 +42,23 @@
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
 
+(defun add-to-path (path)
+  (if (file-exists-p path)
+      (progn
+        (setenv "PATH" (concat path path-separtor (getenv "PATH")))
+        (setq exec-path (cons path exec-path)))))
 
-;; cygwin path setup
+;; setup PATH
+(defun add-to-path (path)
+  (if (file-exists-p path)
+      (progn
+        (setenv "PATH" (concat path path-separator (getenv "PATH")))
+        (setq exec-path (cons path exec-path)))))
 
-(let ((cygwin-bin-path "c:/cygwin/bin"))
-  (if (file-exists-p cygwin-bin-path)
-     (progn
-       (setenv "PATH" (concat cygwin-bin-path ";" (getenv "PATH")))
-       (setq exec-path (cons cygwin-bin-path exec-path)))))
+(add-to-path "c:/cygwin/bin")
+(add-to-path "/usr/local/bin")
+(add-to-path "~/bin")
 
-(load-file "bindings.el")
+;; load bindings
+(load "bindings.el")
+
