@@ -21,6 +21,28 @@
   (when (not (package-installed-p p))
     (package-install p)))
 
+;; setup load path
+
+(setq dotfiles-dir (file-name-directory
+                    (or (buffer-file-name) load-file-name)))
+
+(setq hpk-vendor-dir (file-name-as-directory (concat dotfiles-dir "vendor")))
+
+(defun hpk-list-dirs-in (dir)
+  "List subdirectories of dir, excluding \".\" and \" ..\"."
+  (remove-if
+   (lambda (x) (or (equal x ".")
+               (equal x "..")
+               (not (file-directory-p (concat (file-name-as-directory dir) x)))))
+   (directory-files dir)))
+
+(add-to-list 'load-path dotfiles-dir)
+
+;; add every directory under vendor to load-path
+(dolist (dir (hpk-list-dirs-in hpk-vendor-dir))
+  (add-to-list 'load-path (concat hpk-vendor-dir dir)))
+
+
 ;; sr-speedbar
 
 (require 'sr-speedbar)
@@ -34,23 +56,11 @@
 ;; skip speedbar when changing the active window
 (setq sr-speedbar-skip-other-window-p t)
 
-(setq dotfiles-dir (file-name-directory
-                    (or (buffer-file-name) load-file-name)))
-					
-(add-to-list 'load-path dotfiles-dir)
-(add-to-list 'load-path (concat dotfiles-dir "vendor"))
 
 ;; use forked js2-mode
 ;; https://github.com/mooz/js2-mode
 (autoload 'js2-mode "js2-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
-
-
-(defun add-to-path (path)
-  (if (file-exists-p path)
-      (progn
-        (setenv "PATH" (concat path path-separtor (getenv "PATH")))
-        (setq exec-path (cons path exec-path)))))
 
 ;; setup PATH
 (defun add-to-path (path)
