@@ -9,6 +9,7 @@
 (global-set-key [f10] 'ido-find-file)
 ;; (global-set-key [f11] 'ido-switch-buffer)
 (global-set-key [f12] 'other-window)
-(global-set-key (kbd "s-w") 'kill-this-buffer)
+(global-set-key (kbd "s-w") 'kill-this-buffer) ; mac
+(global-set-key (kbd "C-<f4>") 'kill-this-buffer) ; win
 
 (provide 'hpk-bindings)
