@@ -32,9 +32,13 @@
 ;; show speedbar on the right side of the current window
 (setq sr-speedbar-right-side nil)
 ;; skip speedbar when changing the active window
-(setq sr-speedbar-skip-other-window-p t)n
+(setq sr-speedbar-skip-other-window-p t)
 
-(add-to-list 'load-path "~/.emacs.d/vendor/")
+(setq dotfiles-dir (file-name-directory
+                    (or (buffer-file-name) load-file-name)))
+					
+(add-to-list 'load-path dotfiles-dir)
+(add-to-list 'load-path (concat dotfiles-dir "vendor"))
 
 ;; use forked js2-mode
 ;; https://github.com/mooz/js2-mode
@@ -60,5 +64,4 @@
 (add-to-path "~/bin")
 
 ;; load bindings
-(load "bindings.el")
-
+(require 'hpk-bindings)
