@@ -75,3 +75,6 @@
 
 ;; load bindings
 (require 'hpk-bindings)
+
+(blink-cursor-mode)
+(global-auto-revert-mode)
