@@ -78,3 +78,9 @@
 
 (blink-cursor-mode)
 (global-auto-revert-mode)
+
+;; don't put auto-save files to current directory
+;; http://stackoverflow.com/a/11310599/1363047
+;; TODO: test if it works
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
