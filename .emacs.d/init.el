@@ -42,9 +42,23 @@
 (dolist (dir (hpk-list-dirs-in hpk-vendor-dir))
   (add-to-list 'load-path (concat hpk-vendor-dir dir)))
 
+;;------------------------------
+;; starter kit
+(require 'starter-kit)
+(require 'starter-kit-bindings)
+(require 'starter-kit-ruby)
 
+;;------------------------------
+;; handlebars-mode
+(add-to-list 'auto-mode-alist '("\\.handlebars$" . handlebars-mode))
+
+;;------------------------------
+;; find-file-in-project
+(setq ffip-patterns (append ffip-patterns '("*.css", "*.handlebars")))
+
+
+;;------------------------------
 ;; sr-speedbar
-
 (require 'sr-speedbar)
 (load "sr-speedbar")
 ;; don't use icons
@@ -84,3 +98,4 @@
 ;; TODO: test if it works
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
+
