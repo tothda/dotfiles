@@ -14,7 +14,8 @@
                       starter-kit-ruby
                       starter-kit-js
                       sr-speedbar
-                      handlebars-mode)
+                      handlebars-mode
+                      markdown-mode)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
@@ -47,14 +48,18 @@
 (require 'starter-kit)
 (require 'starter-kit-bindings)
 (require 'starter-kit-ruby)
+(require 'starter-kit-lisp)
 
 ;;------------------------------
 ;; handlebars-mode
 (add-to-list 'auto-mode-alist '("\\.handlebars$" . handlebars-mode))
-
+;;----------------------------------------
+;; markdown-mode
+(add-to-list 'auto-mode-alist '("\\.markdown$" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
 ;;------------------------------
 ;; find-file-in-project
-(setq ffip-patterns (append ffip-patterns '("*.css", "*.handlebars")))
+;; (setq ffip-patterns (append ffip-patterns '("*.css", "*.handlebars")))
 
 
 ;;------------------------------
@@ -75,6 +80,7 @@
 ;; https://github.com/mooz/js2-mode
 (autoload 'js2-mode "js2-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(setq js2-basic-offset 2)
 
 ;; setup PATH
 (defun add-to-path (path)
@@ -99,3 +105,8 @@
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
 
+;; scroll text one line at a time
+(setq scroll-conservatively 10000)
+
+;; turn off alarm bell completely
+(setq ring-bell-function 'ignore)
