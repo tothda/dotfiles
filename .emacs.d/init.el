@@ -15,6 +15,8 @@
                       starter-kit-js
                       sr-speedbar
                       handlebars-mode
+                      haml-mode
+                      yaml-mode
                       markdown-mode)
   "A list of packages to ensure are installed at launch.")
 
@@ -57,6 +59,13 @@
 ;; markdown-mode
 (add-to-list 'auto-mode-alist '("\\.markdown$" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
+;;------------------------------
+;; haml-mode
+(add-to-list 'auto-mode-alist '("\\.haml$" . haml-mode))
+;;------------------------------
+;; yaml-mode
+(add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode))
+(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 ;;------------------------------
 ;; find-file-in-project
 ;; (setq ffip-patterns (append ffip-patterns '("*.css", "*.handlebars")))
