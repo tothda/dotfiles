@@ -17,12 +17,17 @@
                       handlebars-mode
                       haml-mode
                       yaml-mode
-                      markdown-mode)
+                      markdown-mode
+                      scss-mode
+                      move-text
+                      ibuffer-vc)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
     (package-install p)))
+
+(require 'cl)
 
 ;; setup load path
 
@@ -44,6 +49,7 @@
 ;; add every directory under vendor to load-path
 (dolist (dir (hpk-list-dirs-in hpk-vendor-dir))
   (add-to-list 'load-path (concat hpk-vendor-dir dir)))
+
 
 ;;------------------------------
 ;; starter kit
@@ -67,8 +73,17 @@
 (add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode))
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 ;;------------------------------
+;; coffee-mode
+(add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
+(setq coffee-tab-width 2)
+;;------------------------------
+;; scss-mode
+(add-to-list 'auto-mode-alist '("\\.scss$" . scss-mode))
+(add-to-list 'auto-mode-alist '("\\.sass$" . scss-mode))
+;;------------------------------
 ;; find-file-in-project
-;; (setq ffip-patterns (append ffip-patterns '("*.css", "*.handlebars")))
+(require 'find-file-in-project)
+(setq ffip-patterns (append ffip-patterns '("*.css" "*.handlebars" "*.coffee" "*.clj" "*.cljs")))
 
 
 ;;------------------------------
@@ -116,6 +131,41 @@
 
 ;; scroll text one line at a time
 (setq scroll-conservatively 10000)
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
+(setq mouse-wheel-progressive-speed nil)
 
 ;; turn off alarm bell completely
 (setq ring-bell-function 'ignore)
+
+;; ibuffer-vc
+;; https://github.com/purcell/ibuffer-vc
+(add-hook 'ibuffer-hook
+          (lambda ()
+            (ibuffer-vc-set-filter-groups-by-vc-root)
+            (unless (eq ibuffer-sorting-mode 'alphabetic)
+              (ibuffer-do-sort-by-alphabetic))))
+
+;; hide asterix buffers from the list
+(require 'ibuf-ext)
+(setq ibuffer-never-show-predicates (list "^\\*"))
+(setq ibuffer-saved-filters
+      (quote
+       (("modified" ((predicate buffer-modified-p (current-buffer)))))))
+
+
+(require 'move-text)
+(move-text-default-bindings)
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(css-indent-offset 2)
+ '(scss-compile-at-save nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
