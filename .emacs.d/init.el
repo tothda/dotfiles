@@ -20,7 +20,9 @@
                       markdown-mode
                       scss-mode
                       move-text
-                      ibuffer-vc)
+                      ack-and-a-half
+                      ibuffer-vc
+                      coffee-mode)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
