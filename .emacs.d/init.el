@@ -22,7 +22,10 @@
                       move-text
                       ack-and-a-half
                       ibuffer-vc
-                      coffee-mode)
+                      coffee-mode
+                      clojure-mode
+                      nrepl
+                      solarized-theme)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
@@ -52,6 +55,9 @@
 (dolist (dir (hpk-list-dirs-in hpk-vendor-dir))
   (add-to-list 'load-path (concat hpk-vendor-dir dir)))
 
+;;------------------------------
+;; color-theme
+(load-theme 'solarized-dark t)
 
 ;;------------------------------
 ;; starter kit
@@ -164,6 +170,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(css-indent-offset 2)
+ '(custom-safe-themes (quote ("501caa208affa1145ccbb4b74b6cd66c3091e41c5bb66c677feda9def5eab19c" default)))
  '(scss-compile-at-save nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
