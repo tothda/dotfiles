@@ -7,15 +7,18 @@
 (provide 'td-init)
 #+END_SRC
 
-** Prerequisites 
+** How to install
 
-- git
+- install git
 - link the Org folder in my Dropbox to ~/Org
-  #+BEGIN_SRC sh
+  #+BEGIN_SRC sh :tangle no
     ln -s /Volumes/HDD/Dropbox/Org ~/Org
     ln -s /Volumes/HDD/Dropbox/DBX/Org/ ~/Org/DBX
   #+END_SRC
- 
+- link .spacemacs 
+- tangle td-init.org
+- copy =td-init.el= to ~/.emacs.d/private
+
 * Apperance
 
 * Org config
@@ -67,6 +70,19 @@ Set up default Org directory.
      ("j" "Journal" entry (file+datetree "~/Org/journal.org")
           "* %?\nEntered on %U\n  %i\n  %a")))
 #+END_SRC
+
+** Agenda
+
+#+BEGIN_SRC elisp
+  (setq org-agenda-files '("~/Org/DBX/"
+                           "~/Org/DBX/mabisz"
+                           "~/Org/DBX/dbx"
+                           "~/Org/"))
+#+END_SRC
+
+#+RESULTS:
+| ~/Org/DBX/ | ~/Org/DBX/mabisz | ~/Org/DBX/dbx | ~/Org/ |
+
 
 * Functions
 
