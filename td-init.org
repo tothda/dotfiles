@@ -1,0 +1,91 @@
+#+TITLE: Emacs Init
+#+PROPERTY: header-args :tangle yes 
+
+* Prologue
+
+#+BEGIN_SRC elisp
+(provide 'td-init)
+#+END_SRC
+
+** Prerequisites 
+
+- git
+- link the Org folder in my Dropbox to ~/Org
+  #+BEGIN_SRC sh
+    ln -s /Volumes/HDD/Dropbox/Org ~/Org
+    ln -s /Volumes/HDD/Dropbox/DBX/Org/ ~/Org/DBX
+  #+END_SRC
+ 
+* Apperance
+
+* Org config
+
+
+Enable some Org-Babel languages, and don't require confirmation when I run the
+code blocks.
+
+#+BEGIN_SRC elisp
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((emacs-lisp . t)
+     (sql . t)
+     (sh . t)
+     (http . t)
+     (ledger . t)))
+
+  (setq org-confirm-babel-evaluate nil)
+#+END_SRC
+
+Link abbreviations used in my org files. For example [[redmine:777]] written as
+
+#+BEGIN_SRC 
+[[redmine:777]]
+#+END_SRC
+
+#+BEGIN_SRC elisp
+  (setq org-link-abbrev-alist
+        '(("redmine"  . "http://redmine.dbx.hu/issues/")
+          ("NAK" . "https://dbxkft.atlassian.net/browse/NAK-")))
+#+END_SRC
+
+Set up default Org directory.
+
+#+BEGIN_SRC elisp
+(setq org-directory "~/Org")
+#+END_SRC
+
+** Capture
+
+#+BEGIN_SRC elisp
+(setq org-default-notes-file (concat org-directory "/notes.org"))
+#+END_SRC
+
+#+BEGIN_SRC elisp
+  (setq org-capture-templates
+   '(("t" "Todo" entry (file+headline "~/Org/notes.org" "Tasks")
+          "* TODO %?\n  %i\n  %a")
+     ("j" "Journal" entry (file+datetree "~/Org/journal.org")
+          "* %?\nEntered on %U\n  %i\n  %a")))
+#+END_SRC
+
+* Functions
+
+** Split frame and open an exisitng buffer in the right window
+
+#+BEGIN_SRC elisp
+    (defun td-open-buffer-in-split-window (arg)
+      (interactive "B")
+      (split-window-right)
+      (windmove-right)
+      (switch-to-buffer arg))
+
+  (defun td-open-ledger ()
+    (interactive)
+    )
+#+END_SRC
+
+* Keybindings
+
+#+BEGIN_SRC elisp
+(evil-leader/set-key "ob" 'td-open-buffer-in-split-window)
+#+END_SRC
