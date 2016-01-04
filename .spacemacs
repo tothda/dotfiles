@@ -57,8 +57,6 @@
 This function is called at the very startup of Spacemacs initialization
 before layers configuration."
 
-  (setq org-link-abbrev-alist
-        '(("redmine"  . "http://redmine.dbx.hu/issues/")))
 
   ;; This setq-default sexp is an exhaustive list of all the supported
   ;; spacemacs settings.
@@ -83,8 +81,8 @@ before layers configuration."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(solarized-light
-                         solarized-dark
+   dotspacemacs-themes '(solarized-dark
+                         solarized-light
                          leuven
                          monokai
                          zenburn)
@@ -170,25 +168,9 @@ before layers configuration."
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
 
-  (org-babel-do-load-languages
-   'org-babel-load-languages
-   '((emacs-lisp . t)
-     (sql . t)
-     (sh . t)
-     (http . t)
-     (ledger . t)))
+  (add-to-list 'load-path "~/.emacs.d/private/")
+  (require 'td-init)
 
-  ;; Ne kérdezzen rá org-babel kódok futtatása előtt, hogy
-  ;; szeretném-e futtatni.
-  (setq org-confirm-babel-evaluate nil)
-
-  ;; Save org-clock history and the running clock between sessions.
-  (setq org-clock-persist 'history)
-  (org-clock-persistence-insinuate)
-  (setq org-clock-in-resume t)
-  (setq org-todo-keywords
-         '((sequence "TODO(t)" "WAIT(w@/!)" "|" "DONE(d!)" "CANCELED(c@)")))
-  (setq org-log-into-drawer t)
 
   )
 
@@ -231,6 +213,9 @@ layers configuration."
  '(ahs-idle-interval 0.25)
  '(ahs-idle-timer 0 t)
  '(ahs-inhibit-face-list nil)
+ '(custom-safe-themes
+   (quote
+    ("fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default)))
  '(expand-region-contract-fast-key "V")
  '(expand-region-reset-fast-key "r")
  '(ledger-reports
@@ -241,10 +226,6 @@ layers configuration."
      ("payee" "ledger -f %(ledger-file) reg @%(payee)")
      ("account" "ledger -f %(ledger-file) reg %(account)"))))
  '(magit-use-overlays nil)
- '(org-agenda-files
-   (quote
-    ("/Volumes/HDD/Dropbox/DBX/Org/dbx/" "/Volumes/HDD/Dropbox/DBX/Org/mabisz/" "/Volumes/HDD/Dropbox/DBX/Org/"
-     "/Volumes/HDD/Dropbox/Org/")))
  '(org-export-backends (quote (ascii html icalendar latex md)))
  '(paradox-github-token t)
  '(ring-bell-function (quote ignore) t)
