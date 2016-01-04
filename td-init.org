@@ -1,5 +1,6 @@
 #+TITLE: Emacs Init
-#+PROPERTY: header-args :tangle yes 
+#+PROPERTY: header-args+ :tangle yes
+#+PROPERTY: header-args+ :results silent
 
 * Prologue
 
@@ -39,6 +40,7 @@ code blocks.
   (setq org-confirm-babel-evaluate nil)
 #+END_SRC
 
+
 Link abbreviations used in my org files. For example [[redmine:777]] written as
 
 #+BEGIN_SRC 
@@ -57,6 +59,18 @@ Set up default Org directory.
 (setq org-directory "~/Org")
 #+END_SRC
 
+#+RESULTS:
+: ~/Org
+
+** Agenda
+
+#+BEGIN_SRC elisp
+  (setq org-agenda-files '("~/Org/DBX/"
+                           "~/Org/DBX/mabisz"
+                           "~/Org/DBX/dbx"
+                           "~/Org/"))
+#+END_SRC
+
 ** Capture
 
 #+BEGIN_SRC elisp
@@ -71,18 +85,11 @@ Set up default Org directory.
           "* %?\nEntered on %U\n  %i\n  %a")))
 #+END_SRC
 
-** Agenda
-
 #+BEGIN_SRC elisp
-  (setq org-agenda-files '("~/Org/DBX/"
-                           "~/Org/DBX/mabisz"
-                           "~/Org/DBX/dbx"
-                           "~/Org/"))
+  (setq org-refile-targets
+        '((nil :maxlevel . 3)
+          (org-agenda-files :maxlevel . 3)))
 #+END_SRC
-
-#+RESULTS:
-| ~/Org/DBX/ | ~/Org/DBX/mabisz | ~/Org/DBX/dbx | ~/Org/ |
-
 
 * Functions
 
