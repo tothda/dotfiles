@@ -36,6 +36,7 @@
      javascript
      ranger
      prodigy
+     themes-megapack
      ;; syntax-checking
      )
 
