@@ -16,7 +16,8 @@
     ln -s /Volumes/HDD/Dropbox/Org ~/Org
     ln -s /Volumes/HDD/Dropbox/DBX/Org/ ~/Org/DBX
   #+END_SRC
-- link .spacemacs 
+- link .spacemacs
+- link bookmark file
 - tangle td-init.org
 - copy =td-init.el= to ~/.emacs.d/private
 
