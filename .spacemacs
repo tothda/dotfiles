@@ -202,37 +202,37 @@ layers configuration."
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ahs-case-fold-search nil)
- '(ahs-default-range (quote ahs-range-whole-buffer))
- '(ahs-idle-interval 0.25)
- '(ahs-idle-timer 0 t)
- '(ahs-inhibit-face-list nil)
- '(custom-safe-themes
-   (quote
-    ("fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default)))
- '(expand-region-contract-fast-key "V")
- '(expand-region-reset-fast-key "r")
- '(ledger-reports
-   (quote
-    (("cash" "ledger --price -db prices.db -V -f 2015.ledger balance ^Assets ^Kriszti:Assets")
-     ("bal" "ledger -f %(ledger-file) bal")
-     ("reg" "ledger -f %(ledger-file) reg")
-     ("payee" "ledger -f %(ledger-file) reg @%(payee)")
-     ("account" "ledger -f %(ledger-file) reg %(account)"))))
- '(magit-use-overlays nil)
- '(org-export-backends (quote (ascii html icalendar latex md)))
- '(paradox-github-token t)
- '(ring-bell-function (quote ignore) t)
- '(sql-ms-program "isql"))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
- '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
+;; (custom-set-variables
+;;  ;; custom-set-variables was added by Custom.
+;;  ;; If you edit it by hand, you could mess it up, so be careful.
+;;  ;; Your init file should contain only one such instance.
+;;  ;; If there is more than one, they won't work right.
+;;  '(ahs-case-fold-search nil)
+;;  '(ahs-default-range (quote ahs-range-whole-buffer))
+;;  '(ahs-idle-interval 0.25)
+;;  '(ahs-idle-timer 0 t)
+;;  '(ahs-inhibit-face-list nil)
+;;  '(custom-safe-themes
+;;    (quote
+;;     ("fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default)))
+;;  '(expand-region-contract-fast-key "V")
+;;  '(expand-region-reset-fast-key "r")
+;;  '(ledger-reports
+;;    (quote
+;;     (("cash" "ledger --price -db prices.db -V -f 2015.ledger balance ^Assets ^Kriszti:Assets")
+;;      ("bal" "ledger -f %(ledger-file) bal")
+;;      ("reg" "ledger -f %(ledger-file) reg")
+;;      ("payee" "ledger -f %(ledger-file) reg @%(payee)")
+;;      ("account" "ledger -f %(ledger-file) reg %(account)"))))
+;;  '(magit-use-overlays nil)
+;;  '(org-export-backends (quote (ascii html icalendar latex md)))
+;;  '(paradox-github-token t)
+;;  '(ring-bell-function (quote ignore) t)
+;;  '(sql-ms-program "isql"))
+;; (custom-set-faces
+;;  ;; custom-set-faces was added by Custom.
+;;  ;; If you edit it by hand, you could mess it up, so be careful.
+;;  ;; Your init file should contain only one such instance.
+;;  ;; If there is more than one, they won't work right.
+;;  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
+;;  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
