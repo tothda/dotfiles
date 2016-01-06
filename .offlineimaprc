@@ -1,0 +1,24 @@
+[general]
+accounts = Work
+ui = TTY.TTYUI
+pythonfile = ~/.offlineimap.py
+
+[Account Work]
+localrepository = WorkLocal
+remoterepository = WorkRemote
+
+[Repository WorkLocal]
+type = Maildir
+localfolders = ~/.Mail/Work
+
+[Repository WorkRemote]
+type = Gmail
+remotehost = imap.gmail.com
+realdelete=no
+maxconnections=1
+ssl = yes
+remoteport = 993
+remoteuser = david.toth@dbx.hu
+remotepasseval = get_password_emacs("imap.gmail.com", "david.toth@dbx.hu", "993")
+folderfilter = lambda foldername: foldername not in ['[Gmail]/Spam', '[Gmail]/All Mail', '[Gmail]/Starred', '[Gmail]/Important', 'Veddvelem']
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt

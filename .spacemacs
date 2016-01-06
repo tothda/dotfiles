@@ -37,6 +37,8 @@
      ranger
      prodigy
      themes-megapack
+     (mu4e :variables
+           mu4e-installation-path "/usr/local/share/emacs/site-lisp/mu4e")
      ;; syntax-checking
      )
 
