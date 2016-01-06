@@ -146,3 +146,20 @@ Set up default Org directory.
 
 (require 'org-mu4e)
 #+END_SRC
+* Prodigy Services
+
+#+BEGIN_SRC elisp
+(prodigy-define-service
+  :name "Glassfish"
+  :command "./asadmin"
+  :cwd "~/apps/glassfish4/bin"
+  :url "http://localhost:12048/common/index.jsf"
+  :args '("start-domain" "--verbose=true" "modules"))
+
+(prodigy-define-service
+  :name "ActiveMQ 5.13.0"
+  :cwd "~/apps/apache-activemq-5.13.0"
+  :command "./bin/activemq"
+  :args '("console")
+  :url "http://admin:admin@localhost:8161/admin/queues.jsp")
+#+END_SRC
