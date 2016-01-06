@@ -10,18 +10,19 @@
 
 ** How to install
 
-- install git
-- link the Org folder in my Dropbox to ~/Org
-  #+BEGIN_SRC sh :tangle no
-    ln -s /Volumes/HDD/Dropbox/Org ~/Org
-    ln -s /Volumes/HDD/Dropbox/DBX/Org/ ~/Org/DBX
-  #+END_SRC
-- link .spacemacs
-- link bookmark file
-- tangle td-init.org
-- copy =td-init.el= to ~/.emacs.d/private
-- [[http://www.djcbsoftware.nl/code/mu/mu4e/Installation.html][Install mu4e]]
-- link .offlineimaprc and .offlineimap.py
+- Install
+  - git
+  - [[http://www.djcbsoftware.nl/code/mu/mu4e/Installation.html][mu4e]]
+- Tangle td-init.org
+- Link from tothda/dotfiles
+  - ~/.spacemacs
+  - ~/.emacs.d/private/td-init.el
+  - ~/.offlineimaprc
+  - ~/.offlineimap.py
+- Link from Dropbox
+  - ~/.emacs.d/.cache/bookmarks
+  - ~/.ssh/config
+  - ~/Org
 
 * Apperance
 
