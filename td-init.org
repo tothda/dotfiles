@@ -26,7 +26,7 @@
 
 * Apperance
 
-* Org config
+* Org
 
 
 Enable some Org-Babel languages, and don't require confirmation when I run the
@@ -207,6 +207,16 @@ Selecting from the accounts.
 
 #+BEGIN_SRC elisp
 (require 'org-mu4e)
+#+END_SRC
+* Calendar
+
+#+BEGIN_SRC elisp
+  (require 'org-gcal)
+
+  (setq org-gcal-client-id "430612536222-545sucupsdec9hpg2p81fvri83pdvjq6.apps.googleusercontent.com"
+        org-gcal-client-secret "nm9QpjMLKoNFG6GK-Hb6w9DY"
+        org-gcal-dir "~/Org/org-gcal/"
+        org-gcal-file-alist '(("david.toth@dbx.hu" .  "~/Org/DBX/dbx-calendar.org")))
 #+END_SRC
 * Prodigy Services
 
