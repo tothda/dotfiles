@@ -118,32 +118,94 @@ Set up default Org directory.
 #+END_SRC
 * Email
 
+
+source: http://0xax.blogspot.hu/2014/11/emacs-mu4e-offlineimap-multiply-accounts.html
+
+** mu4e settings
+
 #+BEGIN_SRC elisp
-(setq mu4e-maildir "~/.Mail")
+  (setq mu4e-maildir "~/.Mail"
+        mu4e-get-mail-command "offlineimap"
+        mu4e-attachment-dir  "/tmp")
 
-(setq mu4e-drafts-folder "/Work/[Gmail].Drafts")
-(setq mu4e-sent-folder   "/Work/[Gmail].Sent Mail")
-(setq mu4e-trash-folder  "/Work/[Gmail].Trash")
+  (setq mu4e-drafts-folder "/Work/[Gmail].Drafts")
+  (setq mu4e-sent-folder   "/Work/[Gmail].Sent Mail")
+  (setq mu4e-trash-folder  "/Work/[Gmail].Trash")
 
-;; don't save message to Sent Messages, Gmail/IMAP takes care of this
-(setq mu4e-sent-messages-behavior 'delete)
+  ;; don't save message to Sent Messages, Gmail/IMAP takes care of this
+  (setq mu4e-sent-messages-behavior 'delete)
 
+  ;; don't keep message buffers around
+  (setq message-kill-buffer-on-exit t)
+#+END_SRC
 
+** Maildir shortcuts
+
+#+BEGIN_SRC elisp
 (setq mu4e-maildir-shortcuts
     '( ("/Work/INBOX"               . ?i)
        ("/Work/[Gmail].Sent Mail"   . ?s)
        ("/Work/[Gmail].Trash"       . ?t)
        ("/Work/[Gmail].All Mail"    . ?a)))
+#+END_SRC
+** Mail accounts
 
-(setq mu4e-get-mail-command "offlineimap")
+#+BEGIN_SRC elisp
+  (defvar my-mu4e-account-alist
+    '(("Personal"
+       ;; about me
+       (user-mail-address      "tothda@gmail.com")
+       (user-full-name         "Tóth Dávid")
+       ;; smtp
+       (smtpmail-stream-type starttls)
+       (smtpmail-starttls-credentials '(("smtp.gmail.com" 587 nil nil)))
+       (smtpmail-auth-credentials '(("smtp.gmail.com" 587 "tothda@gmail.com" nil)))
+       (smtpmail-default-smtp-server "smtp.gmail.com")
+       (smtpmail-smtp-server "smtp.gmail.com")
+       (smtpmail-smtp-service 587))
+      ("Work"
+       ;; about me
+       (user-mail-address      "david.toth@dbx.hu")
+       (user-full-name         "Tóth Dávid")
+       ;; smtp
+       (smtpmail-stream-type starttls)
+       (smtpmail-starttls-credentials '(("smtp.gmail.com" 587 nil nil)))
+       (smtpmail-auth-credentials '(("smtp.gmail.com" 587 "david.toth@dbx.hu" nil)))
+       (smtpmail-default-smtp-server "smtp.gmail.com")
+       (smtpmail-smtp-service 587))))
+#+END_SRC
 
-(setq
-   user-mail-address "david.toth@dbx.hu"
-   user-full-name  "Tóth Dávid")
+Selecting from the accounts.
 
-;; don't keep message buffers around
-(setq message-kill-buffer-on-exit t)
+#+BEGIN_SRC elisp
+  ;;
+  ;; Found here - http://www.djcbsoftware.nl/code/mu/mu4e/Multiple-accounts.html
+  ;;
+  (defun my-mu4e-set-account ()
+    "Set the account for composing a message."
+    (let* ((account
+            (if mu4e-compose-parent-message
+                (let ((maildir (mu4e-message-field mu4e-compose-parent-message :maildir)))
+                  (string-match "/\\(.*?\\)/" maildir)
+                  (match-string 1 maildir))
+              (completing-read (format "Compose with account: (%s) "
+                                       (mapconcat #'(lambda (var) (car var))
+                                                  my-mu4e-account-alist "/"))
+                               (mapcar #'(lambda (var) (car var)) my-mu4e-account-alist)
+                               nil t nil nil (caar my-mu4e-account-alist))))
+           (account-vars (cdr (assoc account my-mu4e-account-alist))))
+      (if account-vars
+          (mapc #'(lambda (var)
+                    (set (car var) (cadr var)))
+                account-vars)
+        (error "No email account found"))))
 
+  (add-hook 'mu4e-compose-pre-hook 'my-mu4e-set-account)
+#+END_SRC
+
+** Org mode integration
+
+#+BEGIN_SRC elisp
 (require 'org-mu4e)
 #+END_SRC
 * Prodigy Services
