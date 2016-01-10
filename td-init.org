@@ -73,6 +73,9 @@ Set up default Org directory.
                            "~/Org/DBX/mabisz"
                            "~/Org/DBX/dbx"
                            "~/Org/"))
+
+  ; show two weeks in org agenda list
+  (setq org-agenda-span 14)
 #+END_SRC
 
 ** Capture
