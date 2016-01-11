@@ -147,14 +147,43 @@ source: http://0xax.blogspot.hu/2014/11/emacs-mu4e-offlineimap-multiply-accounts
   (setq message-kill-buffer-on-exit t)
 #+END_SRC
 
+#+BEGIN_SRC elisp
+  (setq mu4e-view-show-addresses 't
+        message-citation-line-format "%N @ %Y-%m-%d %H:%M %Z:\n"
+        message-citation-line-function 'message-insert-formatted-citation-line
+        mu4e-headers-skip-duplicates 't
+        mu4e-headers-date-format "%Y-%m-%d %H:%M")
+
+  (setq mu4e-headers-fields
+      '( (:date          .  25)
+         (:flags         .   6)
+         (:from          .  22)
+         (:subject       .  nil)))
+
+  (setq mu4e-show-images t)
+
+  (when (fboundp 'imagemagick-register-types)
+        (imagemagick-register-types))
+
+  (setq mail-user-agent 'mu4e-user-agent)
+
+  (require 'mu4e-contrib)
+  (setq mu4e-html2text-command 'mu4e-shr2text)
+  (add-hook 'mu4e-view-mode-hook
+            (lambda()
+              ;; try to emulate some of the eww key-bindings
+              (local-set-key (kbd "<tab>") 'shr-next-link)
+              (local-set-key (kbd "<backtab>") 'shr-previous-link)))
+#+END_SRC
 ** Maildir shortcuts
 
 #+BEGIN_SRC elisp
-(setq mu4e-maildir-shortcuts
-    '( ("/Work/INBOX"               . ?i)
-       ("/Work/[Gmail].Sent Mail"   . ?s)
-       ("/Work/[Gmail].Trash"       . ?t)
-       ("/Work/[Gmail].All Mail"    . ?a)))
+  (setq mu4e-maildir-shortcuts
+      '( ("/Work/INBOX"               . ?i)
+         ("/Personal/INBOX"           . ?p)
+         ("/Work/[Gmail].Sent Mail"   . ?s)
+         ("/Work/[Gmail].Trash"       . ?t)
+         ("/Work/[Gmail].All Mail"    . ?a)))
 #+END_SRC
 ** Mail accounts
 
@@ -224,7 +253,9 @@ Selecting from the accounts.
   (setq org-gcal-client-id "430612536222-545sucupsdec9hpg2p81fvri83pdvjq6.apps.googleusercontent.com"
         org-gcal-client-secret "nm9QpjMLKoNFG6GK-Hb6w9DY"
         org-gcal-dir "~/Org/org-gcal/"
-        org-gcal-file-alist '(("david.toth@dbx.hu" .  "~/Org/DBX/dbx-calendar.org")))
+        org-gcal-token-file "~/Org/org-gcal/.org-gcal-token"
+        org-gcal-file-alist '(("david.toth@dbx.hu" .  "~/Org/DBX/dbx-calendar.org")
+                              ("tothda@gmail.com" . "~/Org/Personal/personal-calendar.org")))
 #+END_SRC
 * Prodigy Services
 

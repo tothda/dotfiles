@@ -1,6 +1,6 @@
 [general]
-accounts = Personal
-ui = TTY.TTYUI
+accounts = Personal,Work
+ui = ttyui
 pythonfile = ~/.offlineimap.py
 
 [Account Personal]
