@@ -65,7 +65,8 @@ Link abbreviations used in my org files. For example [[redmine:777]] written as
 Set up default Org directory.
 
 #+BEGIN_SRC elisp
-(setq org-directory "~/Org")
+  (setq org-directory "~/Org"
+        org-archive-location "~/Org/Archive/%s_archive::")
 #+END_SRC
 
 #+RESULTS:
@@ -74,10 +75,10 @@ Set up default Org directory.
 ** Agenda
 
 #+BEGIN_SRC elisp
-  (setq org-agenda-files '("~/Org/DBX/"
-                           "~/Org/DBX/mabisz"
-                           "~/Org/DBX/dbx"
-                           "~/Org/"))
+  (setq org-agenda-files '("~/Org/DBX/dbx.org"
+                           "~/Org/DBX/modins.org"
+                           "~/Org/personal.org"
+                           "~/Org/inbox.org"))
 
   ; show two weeks in org agenda list
   (setq org-agenda-span 14)
@@ -86,12 +87,12 @@ Set up default Org directory.
 ** Capture
 
 #+BEGIN_SRC elisp
-(setq org-default-notes-file (concat org-directory "/notes.org"))
+(setq org-default-notes-file (concat org-directory "/inbox.org"))
 #+END_SRC
 
 #+BEGIN_SRC elisp
   (setq org-capture-templates
-   '(("t" "Todo" entry (file+headline "~/Org/notes.org" "Tasks")
+   '(("t" "Todo" entry (file+headline "~/Org/inbox.org" "Tasks")
           "* TODO %?\n  %i\n  %a")
      ("j" "Journal" entry (file+datetree "~/Org/journal.org")
           "* %?\nEntered on %U\n  %i\n  %a")))
