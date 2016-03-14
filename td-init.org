@@ -72,18 +72,19 @@ Set up default Org directory.
 #+RESULTS:
 : ~/Org
 
-** Agenda
+** TODO Agenda
 
 #+BEGIN_SRC elisp
   (setq org-agenda-files '("~/Org/DBX/dbx.org"
                            "~/Org/DBX/modins.org"
                            "~/Org/personal.org"
+                           "~/Org/emacs.org"
+                           "~/Org/english.org"
                            "~/Org/inbox.org"))
 
   ; show two weeks in org agenda list
   (setq org-agenda-span 14)
 #+END_SRC
-
 ** Capture
 
 #+BEGIN_SRC elisp
