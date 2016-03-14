@@ -155,6 +155,9 @@ before layers configuration."
    dotspacemacs-default-package-repository nil
    )
   ;; User initialization goes here
+  (setq-default
+   dotspacemacs-enable-paste-micro-state t
+   )
   )
 
 ;; Mikor megnyílik a neotree window, akkor ne az aktuális fájl könyvtára legyen
