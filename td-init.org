@@ -24,13 +24,13 @@ ln -s /usr/local/Cellar/mu/HEAD/share/emacs/site-lisp/mu/mu4e /usr/local/share/e
   - ~/.emacs.d/private/td-init.el
   - ~/.offlineimaprc
   - ~/.offlineimap.py
+  - ~/.tmux.conf
 - Link from Dropbox
   - ~/.emacs.d/.cache/bookmarks
   - ~/.ssh/config
   - ~/Org
 
 * Apperance
-
 * Org
 
 
