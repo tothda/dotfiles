@@ -104,6 +104,17 @@ Set up default Org directory.
         '((nil :maxlevel . 3)
           (org-agenda-files :maxlevel . 3)))
 #+END_SRC
+** Pomodoro
+
+#+BEGIN_SRC elisp
+  (if (eq system-type 'darwin)
+      (add-hook 'org-pomodoro-started-hook
+                (lambda ()
+                  (interactive)
+                  (message "pomodoro started")
+                  (do-applescript (format "tell application \"Pomodoro\" to start \"%s\" duration 25" org-clock-current-task))))
+    (setq org-pomodoro-play-sound nil))
+#+END_SRC
 
 * Functions
 
