@@ -44,46 +44,28 @@ plugins=(git sublime rbenv)
 
 source $ZSH/oh-my-zsh.sh
 
-# make sure, that brew installed packages are used.
-PATH="/usr/local/bin:${PATH}"
-PATH="$HOME/.rbenv/bin:${PATH}"
-eval "$(rbenv init -)"
-
-PATH="/Applications/GitX.app//Contents/Resources:${PATH}"
-PATH="/Users/tothda/libs/apache-ant-1.8.3/bin:${PATH}"
-PATH="/Users/tothda/app/glassfish-3.1.2.2/bin:${PATH}"
-
-PATH="/Users/tothda/bin:${PATH}"
-PLAY_PATH=/Users/tothda/libs/play-1.2.5rc4
-
-export PATH
-export PLAY_PATH
-
 alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
 
 # Emacs
-EMACS_DIR='/Applications/Emacs.app/Contents/MacOS'
 alias es="$EMACS_DIR/Emacs --daemon"
 alias emacs="$EMACS_DIR/bin/emacsclient -c -n"
-export EDITOR=vim
 
 # GIT aliases
 alias gs='git status'
 
 # Emacs
+export EMACS_DIR='/Applications/Emacs.app/Contents/MacOS'
+export EDITOR=ec
+alias ec="emacsclient -c -a \"\" $*"
 alias demacs="rm ~/.emacs.d && ln -s ~/.emacs.hiperk.d ~/.emacs.d && $EMACS_DIR/Emacs &"
 alias memacs="rm ~/.emacs.d && ln -s ~/.emacs.magnars.d ~/.emacs.d && $EMACS_DIR/Emacs &"
 alias spacemacs="rm ~/.emacs.d && ln -s ~/.emacs.spacemacs.d ~/.emacs.d && $EMACS_DIR/Emacs &"
-# NVM
-export NVM_DIR="/Users/tothda/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
-# JAVA HOME
-export JAVA_HOME="`/usr/libexec/java_home -v 1.7`"
+# local server
+function serve {
+    port="${1:-8888}"
+    ruby -run -e httpd . -p $port
+}
 
-# BasicTex
-export PATH=/usr/texbin:"$PATH"
-
-# Play path
-export PLAY_PATH=/Users/tothda/libs/play-1.2.5rc4
+eval "$(fasd --init auto)"
