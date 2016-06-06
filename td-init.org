@@ -104,7 +104,9 @@ Set up default Org directory.
    '(("t" "Todo" entry (file+headline "~/Org/inbox.org" "Tasks")
           "* TODO %?\n  %i\n  %a")
      ("j" "Journal" entry (file+datetree "~/Org/journal.org")
-          "* %?\nEntered on %U\n  %i\n  %a")))
+      "* %?\nEntered on %U\n  %i\n  %a")
+     ("f" "Training" entry (file+datetree "~/Org/Personal/training.org")
+      "* %?\nEntered on %U\n  %i\n  %a")))
 #+END_SRC
 
 #+BEGIN_SRC elisp
