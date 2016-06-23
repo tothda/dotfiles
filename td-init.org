@@ -41,6 +41,9 @@ evaling last sexp in cider.
 * Apperance
 * Org
 
+#+BEGIN_SRC elisp
+(setq org-log-into-drawer t)
+#+END_SRC
 
 Enable some Org-Babel languages, and don't require confirmation when I run the
 code blocks.
@@ -67,6 +70,7 @@ Link abbreviations used in my org files. For example [[redmine:777]] written as
 #+BEGIN_SRC elisp
   (setq org-link-abbrev-alist
         '(("redmine"  . "http://redmine.dbx.hu/issues/")
+          ("MOBY" . "https://dbxkft.atlassian.net/browse/MOBY-")
           ("NAK" . "https://dbxkft.atlassian.net/browse/NAK-")))
 #+END_SRC
 
@@ -85,9 +89,9 @@ Set up default Org directory.
 #+BEGIN_SRC elisp
   (setq org-agenda-files '("~/Org/DBX/dbx.org"
                            "~/Org/DBX/modins.org"
-                           "~/Org/personal.org"
+                           "~/Org/Personal/personal.org"
                            "~/Org/emacs.org"
-                           "~/Org/english.org"
+                           "~/Org/Personal/english.org"
                            "~/Org/inbox.org"))
 
   ; show two weeks in org agenda list
