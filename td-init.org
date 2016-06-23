@@ -126,12 +126,16 @@ Custom agenda views
 
 #+BEGIN_SRC elisp
   (setq org-capture-templates
-   '(("t" "Todo" entry (file+headline "~/Org/inbox.org" "Tasks")
-          "* TODO %?\n  %i\n  %a")
-     ("j" "Journal" entry (file+datetree "~/Org/journal.org")
-      "* %?\nEntered on %U\n  %i\n  %a")
-     ("f" "Training" entry (file+datetree "~/Org/Personal/training.org")
-      "* %?\nEntered on %U\n  %i\n  %a")))
+        '(("p" "Personal...")
+          ("pt" "Todo" entry (file+headline "~/Org/Personal/personal.org" "Capture")
+           "* TODO %?\n  %i")
+          ("pj" "Journal" entry (file+datetree "~/Org/Personal/journal.org")
+           "* %?\nEntered on %U\n  %i\n  %a")
+          ("w" "Work...")
+          ("wt" "Todo" entry (file+headline "~/Org/DBX/dbx.org" "Capture")
+           "* TODO %?")
+          ("wj" "Journal" entry (file+datetree "~/Org/DBX/journal.org")
+           "* %?\nEntered on %U\n  %i")))
 #+END_SRC
 
 #+BEGIN_SRC elisp
