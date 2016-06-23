@@ -97,6 +97,27 @@ Set up default Org directory.
   ; show two weeks in org agenda list
   (setq org-agenda-span 14)
 #+END_SRC
+
+Custom agenda views
+
+#+BEGIN_SRC elisp
+  (setq org-agenda-custom-commands
+        (quote
+         (("n" "Agenda and all TODOs"
+           ((agenda "" nil)
+            (alltodo "" nil))
+           nil)
+          ("p" "Ongoing Projects"
+           ((todo "NEXT"
+                  ((org-agenda-overriding-header "NEXT feladatok")))
+            (tags-todo "+TECHNO-DESIGN/-PROJ"
+                       ((org-agenda-overriding-header "Groupama TECHNO feladatok")))
+            (tags-todo "MKBB/-PROJ"
+                       ((org-agenda-overriding-header "MKBB kárportál feladatok")))
+            (tags-todo "NAK/-PROJ" ((org-agenda-overriding-header "NAK feladatok")))
+            (tags-todo "DESIGN" ((org-agenda-overriding-header "Design, architektúrális feladatok"))))
+           nil nil))))
+#+END_SRC
 ** Capture
 
 #+BEGIN_SRC elisp
