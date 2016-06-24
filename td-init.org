@@ -178,12 +178,11 @@ Custom agenda views
 #+END_SRC
 * Email
 
-
 source: http://0xax.blogspot.hu/2014/11/emacs-mu4e-offlineimap-multiply-accounts.html
 
 ** mu4e settings
 
-#+BEGIN_SRC elisp
+#+BEGIN_SRC elisp :tangle no
   (setq mu4e-maildir "~/.Mail"
         mu4e-get-mail-command "offlineimap"
         mu4e-attachment-dir  "/tmp")
@@ -199,7 +198,7 @@ source: http://0xax.blogspot.hu/2014/11/emacs-mu4e-offlineimap-multiply-accounts
   (setq message-kill-buffer-on-exit t)
 #+END_SRC
 
-#+BEGIN_SRC elisp
+#+BEGIN_SRC elisp :tangle no
   (setq mu4e-view-show-addresses 't
         message-citation-line-format "%N @ %Y-%m-%d %H:%M %Z:\n"
         message-citation-line-function 'message-insert-formatted-citation-line
@@ -229,7 +228,7 @@ source: http://0xax.blogspot.hu/2014/11/emacs-mu4e-offlineimap-multiply-accounts
 #+END_SRC
 ** Maildir shortcuts
 
-#+BEGIN_SRC elisp
+#+BEGIN_SRC elisp :tangle no
   (setq mu4e-maildir-shortcuts
       '( ("/Work/INBOX"               . ?i)
          ("/Personal/INBOX"           . ?p)
@@ -239,7 +238,7 @@ source: http://0xax.blogspot.hu/2014/11/emacs-mu4e-offlineimap-multiply-accounts
 #+END_SRC
 ** Mail accounts
 
-#+BEGIN_SRC elisp
+#+BEGIN_SRC elisp :tangle no
   (defvar my-mu4e-account-alist
     '(("Personal"
        ;; about me
@@ -266,7 +265,7 @@ source: http://0xax.blogspot.hu/2014/11/emacs-mu4e-offlineimap-multiply-accounts
 
 Selecting from the accounts.
 
-#+BEGIN_SRC elisp
+#+BEGIN_SRC elisp :tangle no
   ;;
   ;; Found here - http://www.djcbsoftware.nl/code/mu/mu4e/Multiple-accounts.html
   ;;
@@ -294,7 +293,7 @@ Selecting from the accounts.
 
 ** Org mode integration
 
-#+BEGIN_SRC elisp
+#+BEGIN_SRC elisp :tangle no
 (require 'org-mu4e)
 #+END_SRC
 * Calendar
