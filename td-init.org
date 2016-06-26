@@ -101,35 +101,44 @@ Set up default Org directory.
 Custom agenda views
 
 #+BEGIN_SRC elisp
-  (setq org-agenda-custom-commands
-        (quote
-         (("n" "Agenda and all TODOs"
-           ((agenda "" nil)
-            (alltodo "" nil))
-           nil)
-          ("p" "Ongoing Projects"
-           ((todo "NEXT"
-                  ((org-agenda-overriding-header "NEXT feladatok")))
-            (tags-todo "+TECHNO-DESIGN/-PROJ"
-                       ((org-agenda-overriding-header "Groupama TECHNO feladatok")))
-            (tags-todo "MKBB/-PROJ"
-                       ((org-agenda-overriding-header "MKBB kárportál feladatok")))
-            (tags-todo "NAK/-PROJ" ((org-agenda-overriding-header "NAK feladatok")))
-            (tags-todo "DESIGN" ((org-agenda-overriding-header "Design, architektúrális feladatok"))))
-           nil nil)
-          ("h" "Home Projects"
-           ((tags-todo "HOME_IT"
-                       ((org-agenda-overriding-header "IT feladatok")
-                        (org-agenda-files '("~/Org/Personal/personal.org"))))
-            (tags-todo "HOUSE"
-                       ((org-agenda-overriding-header "Házzal kapcsolatos teendők")
-                        (org-agenda-files '("~/Org/Personal/personal.org"))))
-            (tags-todo "PERSONAL_TODO"
-                       ((org-agenda-overriding-header "Egyéb teendők")
-                        (org-agenda-files '("~/Org/Personal/personal.org"))))
-            (tags-todo "DOTFILES/PROJ"
-                       ((org-agenda-overriding-header "dotfiles")
-                        (org-agenda-files '("~/Org/Personal/personal.org")))))))))
+      (setq org-agenda-custom-commands
+            (quote
+             (("n" "Agenda and all TODOs"
+               ((agenda "" nil)
+                (alltodo "" nil))
+               nil)
+              ("p" "Ongoing Projects"
+               ((todo "NEXT"
+                      ((org-agenda-overriding-header "NEXT feladatok")))
+                (tags-todo "+TECHNO-DESIGN/-PROJ"
+                           ((org-agenda-overriding-header "Groupama TECHNO feladatok")))
+                (tags-todo "MKBB/-PROJ"
+                           ((org-agenda-overriding-header "MKBB kárportál feladatok")))
+                (tags-todo "NAK/-PROJ" ((org-agenda-overriding-header "NAK feladatok")))
+                (tags-todo "DESIGN" ((org-agenda-overriding-header "Design, architektúrális feladatok"))))
+               nil nil)
+              ("h" "Home Projects"
+               ((agenda ""
+                        ((org-agenda-overriding-header "Naptár\n")
+                         (org-agenda-days 7)
+                         (org-agenda-span 7)
+                         (org-agenda-files '("~/Org/Personal/personal.org"))))
+                (tags-todo "HOME_IT"
+                           ((org-agenda-overriding-header "IT feladatok")
+                            (org-agenda-files '("~/Org/Personal/personal.org"))))
+                (tags-todo "HOUSE"
+                           ((org-agenda-overriding-header "Házzal kapcsolatos teendők")
+                            (org-agenda-files '("~/Org/Personal/personal.org"))))
+                (tags-todo "PERSONAL_TODO"
+                           ((org-agenda-overriding-header "Egyéb teendők")
+                            (org-agenda-files '("~/Org/Personal/personal.org"))))
+                (tags-todo "DREAMLAB/-PROJ"
+                           ((org-agenda-overriding-header "Dreamlab support")
+                            (org-agenda-files '("~/Org/Personal/personal.org"))))
+                (tags-todo "DOTFILES/-PROJ"
+                           ((org-agenda-overriding-header "dotfiles")
+                            (org-agenda-files '("~/Org/Personal/personal.org"))))
+                )))))
 #+END_SRC
 ** Capture
 
