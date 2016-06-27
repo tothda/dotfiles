@@ -111,10 +111,11 @@ Custom agenda views
                ((todo "NEXT"
                       ((org-agenda-overriding-header "NEXT feladatok")))
                 (tags-todo "+TECHNO-DESIGN/-PROJ"
-                           ((org-agenda-overriding-header "Groupama TECHNO feladatok")))
+                           ((org-agenda-overriding-header "[Groupama] TECHNO feladatok")))
                 (tags-todo "MKBB/-PROJ"
-                           ((org-agenda-overriding-header "MKBB kárportál feladatok")))
-                (tags-todo "NAK/-PROJ" ((org-agenda-overriding-header "NAK feladatok")))
+                           ((org-agenda-overriding-header "[MKBB] kárportál feladatok")))
+                (tags-todo "NAK/-PROJ" ((org-agenda-overriding-header "[NAK] feladatok")))
+                (tags-todo "INSNET/-PROJ" ((org-agenda-overriding-header "[Insurenet] feladatok")))
                 (tags-todo "DESIGN" ((org-agenda-overriding-header "Design, architektúrális feladatok"))))
                nil nil)
               ("h" "Home Projects"
