@@ -198,7 +198,10 @@ Custom agenda views
 
 #+BEGIN_SRC elisp
 (evil-leader/set-key "ob" 'td-open-buffer-in-split-window)
+(global-set-key (kbd "<f6>") 'org-capture)
 #+END_SRC
+
+
 * Email
 
 source: http://0xax.blogspot.hu/2014/11/emacs-mu4e-offlineimap-multiply-accounts.html
