@@ -1,0 +1,5 @@
+tap "homebrew/cask"
+
+brew "direnv"
+brew "fasd"
+brew "graphviz"
